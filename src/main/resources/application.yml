@@ -13,7 +13,7 @@ spring:
           autoCreateTopics: false
           replicationFactor: ${KAFKA_REPLICATION_FACTOR:1}
           minPartitionCount: ${KAFKA_MIN_PARTITION_COUNT:1}
-          brokers: "${KAFKA_BINDER_BROKERS:localhost:9092}"
+          brokers: "${KAFKA_BINDER_BROKERS:kafka:9092}"
           consumer-properties:
             allow.auto.create.topics: false
           producer-properties:
@@ -21,7 +21,7 @@ spring:
         bindings:
           process-in-0:
             consumer:
-              ackMode: batch
+              ackMode: MANUAL
     aws:
       region:
         static: us-east-1
@@ -30,7 +30,7 @@ spring:
       credentials:
         access-key: test
         secret-key: test
-      endpoint: http://localhost:4566
+      endpoint: http://localstack:4566
 
 kafka:
   topic:

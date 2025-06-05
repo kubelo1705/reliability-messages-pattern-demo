@@ -1,11 +1,11 @@
-# Kafka-RabbitMQ Bridge
+# Kafka-SQS Bridge
 
-A Spring Boot application that acts as a bridge between Apache Kafka and RabbitMQ, helping to manage high traffic by buffering messages in RabbitMQ and reducing Kafka lag.
+A Spring Boot application that acts as a bridge between Apache Kafka and SQS, helping to manage high traffic by buffering messages in SQS and reducing Kafka lag.
 
 ## Features
 
 - Consumes messages from Kafka topics
-- Forwards messages to RabbitMQ queues
+- Forwards messages to SQS queues
 - Manual acknowledgment for reliable message processing
 - Error handling and logging
 - Configurable through application.yml
@@ -16,7 +16,7 @@ A Spring Boot application that acts as a bridge between Apache Kafka and RabbitM
 - Java 17 or higher
 - Maven
 - Apache Kafka
-- RabbitMQ
+- SQS
 - Docker (optional)
 - kafkacat (for testing)
 

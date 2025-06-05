@@ -1,4 +1,4 @@
-package com.example.kafkarabbitmqbridge.config;
+package com.example.kafkasqsbridge.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

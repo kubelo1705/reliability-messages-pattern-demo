@@ -1,4 +1,4 @@
-package com.example.kafkarabbitmqbridge.model;
+package com.example.kafkasqsbridge.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Message {
+public class MessageKafka {
     private String id;
     private String content;
     private String source;

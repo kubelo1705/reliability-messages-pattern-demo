@@ -1,6 +1,6 @@
-package com.example.kafkarabbitmqbridge.service;
+package com.example.kafkasqsbridge.service;
 
-import com.example.kafkarabbitmqbridge.model.Message;
+import com.example.kafkasqsbridge.model.MessageKafka;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ public class SqsService {
     @Value("${aws.sqs.queue.output}")
     private String queueUrl;
 
-    public String sendMessage(Message message) {
+    public String sendMessage(MessageKafka message) {
         try {
             String messageBody = objectMapper.writeValueAsString(message);
             SendMessageRequest request = SendMessageRequest.builder()

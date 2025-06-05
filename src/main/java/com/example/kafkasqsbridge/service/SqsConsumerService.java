@@ -1,4 +1,4 @@
-package com.example.kafkarabbitmqbridge.service;
+package com.example.kafkasqsbridge.service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
