@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    function:
+      definition: process
+    stream:
+      bindings:
+        process-in-0:
+          destination: input-topic
+          contentType: application/json
+          group: kafka-sqs-bridge-group
+      kafka:
+        binder:
+          autoCreateTopics: false
+          replicationFactor: ${KAFKA_REPLICATION_FACTOR:1}
+          minPartitionCount: ${KAFKA_MIN_PARTITION_COUNT:1}
+          brokers: "${KAFKA_BINDER_BROKERS:kafka:29092}"
+          consumer-properties:
+            allow.auto.create.topics: false
+          producer-properties:
+            acks: all
+        bindings:
+          process-in-0:
+            consumer:
+              ackMode: MANUAL
+    aws:
+      region:
+        static: us-east-1
+      stack:
+        auto: false
+      credentials:
+        access-key: test
+        secret-key: test
+      endpoint: http://localstack:4566
+
+kafka:
+  topic:
+    input: input-topic
+
+aws:
+  sqs:
+    queue:
+      output: http://localstack:4566/000000000000/output-queue
