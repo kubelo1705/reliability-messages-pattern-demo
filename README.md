@@ -46,6 +46,10 @@ docker-compose logs -f
 docker exec -it demo-reliability-kafka-1 kafka-topics --create --topic input-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 ```
 
+```bash
+docker exec -it demo-reliability-localstack-1 aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name output-queue --region us-east-1
+```
+
 ### 2. Send Test Messages
 
 Using the provided script:
@@ -62,11 +66,5 @@ KAFKA_CONTAINER=$(docker ps | grep kafka | awk '{print $1}') && KAFKA_BOOTSTRAP_
 
 1. Check Kafka consumer lag:
 ```bash
-kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group kafka-rabbitmq-bridge
+docker exec -i $(docker ps | grep kafka | awk '{print $1}') kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group kafka-sqs-bridge-group
 ```
-
-2. Check RabbitMQ messages:
-- Open RabbitMQ management console: http://localhost:15672
-- Login with guest/guest
-- Navigate to Queues > output-queue
-- Check message count and content
